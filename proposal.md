@@ -1,7 +1,7 @@
 # Major Project Proposal
 
 ## Description
-I am going to create a tower defense game. The player will be able to progress through waves of enemies as they defend their "base" using various "towers", units that destroy the attacking enemies. Player will fight through waves endlessly until their "base" is destroyed
+I am going to create a tower defense game. The player will be able to progress through waves of enemies as they defend their "base" using various "towers", units that destroy the attacking enemies. Player will fight through waves endlessly until their "base" is destroyed.
 
 ## Need To Have List
 - Infinitely scaling waves
@@ -23,7 +23,7 @@ I am going to create a tower defense game. The player will be able to progress t
 - Ability to save progress and return later
 - Dynamic upgrade paths for towers (Special abilities, evolving attack methods)
 - Speed up gameplay option (Attackers move faster, towers shoot faster, etc)
-- Towers with large effects on gameplay elements other than just basic attacking (Income, powering up other towers, putting special effects on attackers)
+- Towers with large effects on gameplay elements other than just attacking (Income, powering up other towers, putting special effects on attackers)
 - Custom made graphics for towers, enemies, etc.
 - Custom Map creation
 - Player used consumable items 
