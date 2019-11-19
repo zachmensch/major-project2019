@@ -12,12 +12,13 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     screen = "mainScreen";
     textAlign(CENTER, CENTER);
-    rectMode(CENTER);
+
 
 }
 
 function draw() {
     displayScreen();
+    startButton.draw();
     
 }
 
@@ -53,21 +54,19 @@ function displayOptions() {
     optionsButtons();
 }
 
-// Buttons for each screen
-class Button {
-    constructor(x, y, buttonWidth, buttonHeight, colour, text) {
-        this.x = x;
-        this.y = y;
-        this.buttonWidth = buttonWidth;
-        this.buttonHeight = buttonHeight;
-        this.colour = colour;
-        this.text = text;
-    }
-    displayButton();
-}
-
 function mainButtons() {
-    let playButton = new Button(height/2, width/2, 50, 50, "white", "PLAY GAME");
+    // Start Button elements (using Clickable library)
+    startButton = new Clickable(width/2, height/2);
+    startButton.resize(250, 100);
+    startButton.color = "green";
+    startButton.text = "Start Game";
+    startButton.textSize = 30;
+    startButton.onHover = function() {
+        startButton.color = "blue";
+    }
+    startButton.onPress = function() {
+        screen = "playScreen";
+    }
 }
 
 function playButtons() {
@@ -77,3 +76,4 @@ function playButtons() {
 function optionsButtons() {
 
 }
+
