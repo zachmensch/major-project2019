@@ -7,7 +7,7 @@
 let screen;
 
 function preload() {
-    CoolFontRegular = loadFont('assets/SF Atarian System.ttf');
+    CoolFontRegular = loadFont('assets/AmericanCaptainPatrius02Fre-PvPd.ttf');
     backgroundImage = loadImage('assets/798161.jpg')
 }
 
@@ -49,14 +49,14 @@ function displayMain() {
     startButton.draw();
     optionsButton.draw();
     // Drawing text on screen
-    textSize(175);
+    textSize(100);
     textFont(CoolFontRegular);
     fill(0)
     text("Armoured Defense", width/2, height/4);
 }
 
 function displayPlay() {
-    background("blue");
+    background(backgroundImage);
 
     playButtons();
 
@@ -73,7 +73,7 @@ function displayPlay() {
 }
 
 function displayOptions() {
-    background("blue");
+    background(backgroundImage);
     optionsButtons();
     optionsBackButton.draw();
 }
@@ -110,7 +110,7 @@ function playButtons() {
     playBackButton.color = "green";
     playBackButton.text = "Back To Menu"
     playBackButton.textFont = CoolFontRegular;
-    playBackButton.textSize = 20;
+    playBackButton.textSize = 15;
     playBackButton.onPress = function() {
         screen = "mainScreen";
     }
@@ -119,7 +119,7 @@ function playButtons() {
     nextRoundButton.color = "green";
     nextRoundButton.text = "Next Round";
     nextRoundButton.textFont = CoolFontRegular;
-    nextRoundButton.textSize = 20;
+    nextRoundButton.textSize = 15;
     nextRoundButton.onPress = function() {
 
     }
