@@ -7,7 +7,7 @@
 let screen;
 
 function preload() {
-    coolFontRegular = loadFont('assets/SF Atarian System.ttf');
+    CoolFontRegular = loadFont('assets/SF Atarian System.ttf');
     backgroundImage = loadImage('assets/798161.jpg')
 }
 
