@@ -7,9 +7,7 @@
 let screen;
 
 function preload() {
-    CoolFontRegular = loadFont('assets/SF Atarian System.ttf');
-    CoolFontItalic = loadFont('assets/SF Atarian System Italic.ttf');
-    CoolFontBold = loadFont('assets/SF Atarian System Bold.ttf');
+    CoolFontRegular = loadFont('assets/D Day Stencil.ttf');
 }
 
 function setup() {
@@ -17,15 +15,12 @@ function setup() {
     screen = "mainScreen";
     textAlign(CENTER, CENTER);
     rectMode(CORNER);
-
-    
-
-
 }
 
 function draw() {
     displayScreen();
-    
+    console.log("p")
+
 }
 
 // Displaying correct screen
@@ -53,9 +48,10 @@ function displayMain() {
     startButton.draw();
     optionsButton.draw();
     // Drawing text on screen
-    textSize(100);
-    textFont(CoolFontBold);
-    text("Game", width/2, height/4);
+    textSize(175);
+    textFont(CoolFontRegular);
+    fill(0)
+    text("Armoured Defense", width/2, height/4);
 }
 
 function displayPlay() {
@@ -71,6 +67,8 @@ function displayPlay() {
     stroke(0)
     strokeWeight(5)
     rect(width/32, height/16, width/32 * 27, height/16 * 14);
+    rect(width/32 * 28.5, height/16 * 7.5, width/32 * 3, height/16 * 7.5);
+    rect(width/32 * 28.5, height/16 * 4.25, width/32 * 3, height/16 * 3)
 }
 
 function displayOptions() {
@@ -85,7 +83,7 @@ function mainButtons() {
     startButton.resize(250, 100);
     startButton.color = "green";
     startButton.text = "Start Game";
-    startButton.textSize = 30;
+    startButton.textSize = 40;
     startButton.textFont = CoolFontRegular;
     startButton.onHover = function() {
         startButton.color = "blue";
@@ -97,7 +95,7 @@ function mainButtons() {
     optionsButton.resize(250, 100);
     optionsButton.color = "green";
     optionsButton.text = "Options";
-    optionsButton.textSize = 30;
+    optionsButton.textSize = 40;
     optionsButton.textFont = CoolFontRegular;
     optionsButton.onPress = function() {
         screen = "optionsScreen";
@@ -111,13 +109,19 @@ function playButtons() {
     playBackButton.color = "green";
     playBackButton.text = "Back To Menu"
     playBackButton.textFont = CoolFontRegular;
-    playBackButton.textSize = 15;
+    playBackButton.textSize = 20;
     playBackButton.onPress = function() {
         screen = "mainScreen";
     }
 
-    nextRoundButton = new Clickable(width/32 * 29, height/16 * 3);
-    
+    nextRoundButton = new Clickable(width/32 * 29, height/16 * 2.5);
+    nextRoundButton.color = "green";
+    nextRoundButton.text = "Next Round";
+    nextRoundButton.textFont = CoolFontRegular;
+    nextRoundButton.textSize = 20;
+    nextRoundButton.onPress = function() {
+
+    }
 
 }
 
