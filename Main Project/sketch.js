@@ -7,7 +7,8 @@
 let screen;
 
 function preload() {
-    CoolFontRegular = loadFont('assets/D Day Stencil.ttf');
+    coolFontRegular = loadFont('assets/SF Atarian System.ttf');
+    backgroundImage = loadImage('assets/798161.jpg')
 }
 
 function setup() {
@@ -41,7 +42,7 @@ function displayScreen() {
 
 // Elements of each screen
 function displayMain() {
-    background("blue");
+    background(backgroundImage);
     // Initializing buttons
     mainButtons();
     // Drawing the buttons
