@@ -1,6 +1,7 @@
 // MAIN TOWER DEFENSE PROJECT 
 // Zach Mensch CS30 2019
 
+//https://juniorgeneral.org/index.php/figure/designer/Dirk%20Schoenberger
 
 // Initial variable setup
 
@@ -8,7 +9,10 @@ let screen;
 
 function preload() {
     CoolFontRegular = loadFont('assets/AmericanCaptainPatrius02Fre-PvPd.ttf');
-    backgroundImage = loadImage('assets/798161.jpg')
+    backgroundImage = loadImage('assets/798161.jpg');
+    pantherTank = loadImage('assets/Panther.png');
+    panzer4Tank = loadImage('assets/Panzer4.png');
+    T34_85Tank = loadImage('assets/T34_85.png');
 }
 
 function setup() {
@@ -69,7 +73,8 @@ function displayPlay() {
     strokeWeight(5)
     rect(width/32, height/16, width/32 * 27, height/16 * 14);
     rect(width/32 * 28.5, height/16 * 7.5, width/32 * 3, height/16 * 7.5);
-    rect(width/32 * 28.5, height/16 * 4.25, width/32 * 3, height/16 * 3)
+    rect(width/32 * 28.5, height/16 * 4.25, width/32 * 3, height/16 * 3);
+    image(panzer4Tank, width/32 * 29, height/16 * 8);
 }
 
 function displayOptions() {
@@ -90,6 +95,7 @@ function mainButtons() {
         startButton.color = "blue";
     }
     startButton.onPress = function() {
+        clear()
         screen = "playScreen";
     }
     optionsButton = new Clickable(width/2 - 125, height/2 + 100);
@@ -99,6 +105,7 @@ function mainButtons() {
     optionsButton.textSize = 40;
     optionsButton.textFont = CoolFontRegular;
     optionsButton.onPress = function() {
+        clear()
         screen = "optionsScreen";
     }
 
@@ -112,6 +119,7 @@ function playButtons() {
     playBackButton.textFont = CoolFontRegular;
     playBackButton.textSize = 15;
     playBackButton.onPress = function() {
+        clear()
         screen = "mainScreen";
     }
 
@@ -134,6 +142,7 @@ function optionsButtons() {
     optionsBackButton.textSize = 30;
     optionsBackButton.textFont = CoolFontRegular
     optionsBackButton.onPress = function() {
+        clear()
         screen = "mainScreen";
     }
 
