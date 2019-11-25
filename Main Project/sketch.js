@@ -72,9 +72,11 @@ function displayPlay() {
     stroke(0)
     strokeWeight(5)
     rect(width/32, height/16, width/32 * 27, height/16 * 14);
+    fill("green");
     rect(width/32 * 28.5, height/16 * 7.5, width/32 * 3, height/16 * 7.5);
+    line(width/32 * 30, height/16 * 7.5, width/32 * 30, height/16 * 15);
     rect(width/32 * 28.5, height/16 * 4.25, width/32 * 3, height/16 * 3);
-    image(panzer4Tank, width/32 * 29, height/16 * 8);
+    image(panzer4Tank, width/32 * 28.75, height/16 * 7.5);
 }
 
 function displayOptions() {
@@ -92,7 +94,8 @@ function mainButtons() {
     startButton.textSize = 40;
     startButton.textFont = CoolFontRegular;
     startButton.onHover = function() {
-        startButton.color = "blue";
+        startButton.color = "darkgreen";
+        startButton.draw();
     }
     startButton.onPress = function() {
         clear()
@@ -104,6 +107,10 @@ function mainButtons() {
     optionsButton.text = "Options";
     optionsButton.textSize = 40;
     optionsButton.textFont = CoolFontRegular;
+    optionsButton.onHover = function() {
+        optionsButton.color = "darkgreen";
+        optionsButton.draw();
+    }
     optionsButton.onPress = function() {
         clear()
         screen = "optionsScreen";
@@ -118,6 +125,10 @@ function playButtons() {
     playBackButton.text = "Back To Menu"
     playBackButton.textFont = CoolFontRegular;
     playBackButton.textSize = 15;
+    playBackButton.onHover = function() {
+        playBackButton.color = "darkgreen";
+        playBackButton.draw();
+    }
     playBackButton.onPress = function() {
         clear()
         screen = "mainScreen";
@@ -128,6 +139,10 @@ function playButtons() {
     nextRoundButton.text = "Next Round";
     nextRoundButton.textFont = CoolFontRegular;
     nextRoundButton.textSize = 15;
+    nextRoundButton.onHover = function() {
+        nextRoundButton.color = "darkgreen";
+        nextRoundButton.draw();
+    }
     nextRoundButton.onPress = function() {
 
     }
@@ -141,6 +156,10 @@ function optionsButtons() {
     optionsBackButton.text = "Back";
     optionsBackButton.textSize = 30;
     optionsBackButton.textFont = CoolFontRegular
+    optionsBackButton.onHover = function() {
+        optionsBackButton.color = "darkgreen"
+        optionsBackButton.draw()
+    }
     optionsBackButton.onPress = function() {
         clear()
         screen = "mainScreen";
