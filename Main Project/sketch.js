@@ -7,8 +7,15 @@
 
 let screen;
 
+// Tower Selection Variables
+
+let selectedTower;
+let tower1;
+var hitTower1 = false;
+var towerSelected = false;
+
 function preload() {
-    CoolFontRegular = loadFont('assets/AmericanCaptainPatrius02Fre-PvPd.ttf');
+    CoolFontRegular = loadFont('assets/SF Atarian System.ttf');
     backgroundImage = loadImage('assets/798161.jpg');
     pantherTank = loadImage('assets/Panther.png');
     panzer4Tank = loadImage('assets/Panzer4.png');
@@ -24,7 +31,11 @@ function setup() {
 
 function draw() {
     displayScreen();
-    console.log("p")
+    //console.log("p");
+    //console.log(mouseX, mouseY);
+    // if (mouseIsPressed) {
+    //     console.log(mouseX, mouseY);
+    // }
 
 }
 
@@ -36,6 +47,7 @@ function displayScreen() {
     
     if (screen === "playScreen") {
         displayPlay();
+        runGame();
     }
 
     if (screen === "optionsScreen") {
@@ -75,8 +87,10 @@ function displayPlay() {
     fill("green");
     rect(width/32 * 28.5, height/16 * 7.5, width/32 * 3, height/16 * 7.5);
     line(width/32 * 30, height/16 * 7.5, width/32 * 30, height/16 * 15);
+    line(width/32 * 28.5, height/16 * 9.5, width/32 * 30, height/16 * 9.5);
     rect(width/32 * 28.5, height/16 * 4.25, width/32 * 3, height/16 * 3);
     image(panzer4Tank, width/32 * 28.75, height/16 * 7.5);
+
 }
 
 function displayOptions() {
@@ -167,3 +181,35 @@ function optionsButtons() {
 
 }
 
+function runGame() {
+    towerSelect();
+    towerPlace();
+
+}
+
+
+function towerSelect() {
+    tower1 = panzer4Tank;
+    hitTower1 = collidePointRect(mouseX, mouseY, 1425, 370, 70, 95);
+
+    if (hitTower1 && mouseIsPressed) {
+        towerSelected = true;
+        selectedTower = tower1;
+    }
+    if (towerSelected) {
+        image(selectedTower, mouseX, mouseY);
+    }
+}
+
+function towerPlace() {
+    inPlayArea = collidePointRect(mouseX, mouseY, 52, 52, 1345, 685)
+
+    if (towerSelected)  {
+        if(inPlayArea && mouseIsPressed) {
+            image(selectedTower, mouseX, mouseY)
+            towerSelected = false
+            selectedtower = ""
+    
+        }
+    }
+}
