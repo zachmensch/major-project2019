@@ -7,12 +7,7 @@
 
 let screen;
 
-// Tower Selection Variables
-
-let selectedTower;
-let tower1;
-var hitTower1 = false;
-var towerSelected = false;
+let tower;
 
 function preload() {
     CoolFontRegular = loadFont('assets/SF Atarian System.ttf');
@@ -47,7 +42,6 @@ function displayScreen() {
     
     if (screen === "playScreen") {
         displayPlay();
-        runGame();
     }
 
     if (screen === "optionsScreen") {
@@ -91,6 +85,8 @@ function displayPlay() {
     rect(width/32 * 28.5, height/16 * 4.25, width/32 * 3, height/16 * 3);
     image(panzer4Tank, width/32 * 28.75, height/16 * 7.5);
 
+
+
 }
 
 function displayOptions() {
@@ -100,7 +96,7 @@ function displayOptions() {
 }
 
 function mainButtons() {
-    // Start Button elements (using Clickable library)
+    // Start Button elements
     startButton = new Clickable(width/2 - 125, height/2 - 50);
     startButton.resize(250, 100);
     startButton.color = "green";
@@ -114,6 +110,7 @@ function mainButtons() {
     startButton.onPress = function() {
         clear()
         screen = "playScreen";
+        startGame();
     }
     optionsButton = new Clickable(width/2 - 125, height/2 + 100);
     optionsButton.resize(250, 100);
@@ -138,7 +135,7 @@ function playButtons() {
     playBackButton.color = "green";
     playBackButton.text = "Back To Menu"
     playBackButton.textFont = CoolFontRegular;
-    playBackButton.textSize = 15;
+    playBackButton.textSize = 20;
     playBackButton.onHover = function() {
         playBackButton.color = "darkgreen";
         playBackButton.draw();
@@ -152,7 +149,7 @@ function playButtons() {
     nextRoundButton.color = "green";
     nextRoundButton.text = "Next Round";
     nextRoundButton.textFont = CoolFontRegular;
-    nextRoundButton.textSize = 15;
+    nextRoundButton.textSize = 20;
     nextRoundButton.onHover = function() {
         nextRoundButton.color = "darkgreen";
         nextRoundButton.draw();
@@ -181,35 +178,6 @@ function optionsButtons() {
 
 }
 
-function runGame() {
-    towerSelect();
-    towerPlace();
+function startGame() {
 
-}
-
-
-function towerSelect() {
-    tower1 = panzer4Tank;
-    hitTower1 = collidePointRect(mouseX, mouseY, 1425, 370, 70, 95);
-
-    if (hitTower1 && mouseIsPressed) {
-        towerSelected = true;
-        selectedTower = tower1;
-    }
-    if (towerSelected) {
-        image(selectedTower, mouseX, mouseY);
-    }
-}
-
-function towerPlace() {
-    inPlayArea = collidePointRect(mouseX, mouseY, 52, 52, 1345, 685)
-
-    if (towerSelected)  {
-        if(inPlayArea && mouseIsPressed) {
-            image(selectedTower, mouseX, mouseY)
-            towerSelected = false
-            selectedtower = ""
-    
-        }
-    }
 }
