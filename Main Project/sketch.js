@@ -42,6 +42,7 @@ function displayScreen() {
     
     if (screen === "playScreen") {
         displayPlay();
+        startGame();
     }
 
     if (screen === "optionsScreen") {
@@ -73,6 +74,7 @@ function displayPlay() {
     playBackButton.draw();
     nextRoundButton.draw();
 
+
     // Drawing playing interface
     fill(255)
     stroke(0)
@@ -80,10 +82,8 @@ function displayPlay() {
     rect(width/32, height/16, width/32 * 27, height/16 * 14);
     fill("green");
     rect(width/32 * 28.5, height/16 * 7.5, width/32 * 3, height/16 * 7.5);
-    line(width/32 * 30, height/16 * 7.5, width/32 * 30, height/16 * 15);
-    line(width/32 * 28.5, height/16 * 9.5, width/32 * 30, height/16 * 9.5);
     rect(width/32 * 28.5, height/16 * 4.25, width/32 * 3, height/16 * 3);
-    image(panzer4Tank, width/32 * 28.75, height/16 * 7.5);
+
 
 
 
@@ -110,7 +110,6 @@ function mainButtons() {
     startButton.onPress = function() {
         clear()
         screen = "playScreen";
-        startGame();
     }
     optionsButton = new Clickable(width/2 - 125, height/2 + 100);
     optionsButton.resize(250, 100);
@@ -179,5 +178,22 @@ function optionsButtons() {
 }
 
 function startGame() {
+    towerSelect();
 
+}
+
+function towerSelect() {
+    let tower1dmg = 1
+    let tower1range = 1
+    tower1 = new Clickable(width/32 * 29, height/16 * 8);
+    tower1.color = "peru";
+    tower1.cornerRadius = 0;
+    tower1.text = "Panzer 4"
+    tower1.textFont = CoolFontRegular
+    tower1.textSize = 20
+    tower1.onHover = function() {
+        tower1.text = " " + tower1dmg + " " + tower1range
+        tower1.draw();
+    }
+    tower1.draw();
 }
