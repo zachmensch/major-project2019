@@ -33,7 +33,6 @@ function draw() {
     // if (mouseIsPressed) {
     //     console.log(mouseX, mouseY);
     // }
-
 }
 
 // Displaying correct screen
@@ -187,27 +186,40 @@ function startGame() {
 function towerSelect() {
     let tower1dmg = 5;
     let tower1range = 10;
-    let tower1speed = 3
+    let tower1speed = 3;
     tower1 = new Clickable(width/32 * 29, height/16 * 8);
     tower1.color = "peru";
     tower1.cornerRadius = 0;
-    tower1.text = "Panzer 4"
-    tower1.textFont = CoolFontRegular
-    tower1.textSize = 20
+    tower1.text = "Panzer 4";
+    tower1.textFont = CoolFontRegular;
+    tower1.textSize = 20;
     tower1.onHover = function() {
-        fill("peru")
-        stroke(0)
-        rect(width/32 * 29 - 130, height/16 * 8, 130, 50)
-        textAlign(CORNER)
-        textSize(17)
-        fill("black")
-        noStroke()
-        text("Dmg: " + tower1dmg + " Rng: " + tower1range + " Spd: " + tower1speed, width/32 * 29 - 125, height/16 * 8 + 25)
+        fill("peru");
+        stroke(0);
+        rect(width/32 * 29 - 130, height/16 * 8, 130, 50);
+        textAlign(CORNER);
+        textSize(17);
+        fill("black");
+        noStroke();
+        text("Dmg: " + tower1dmg + " Rng: " + tower1range + " Spd: " + tower1speed, width/32 * 29 - 125, height/16 * 8 + 25);
         tower1.draw();
     }
     tower1.onPress = function() {
         isHoldingTower = true;
-        console.log(tower1.color)
     }
     tower1.draw();
+}
+
+function mouseReleased() {
+    if (isHoldingTower) {
+        placeTower();
+        //isHoldingTower = false;
+    }
+
+}
+
+function placeTower() {
+    console.log('p');
+    fill("red");
+    rect(500, 500, 500, 500);
 }
