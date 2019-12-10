@@ -219,7 +219,8 @@ function mouseReleased() {
 }
 
 function placeTower() {
-    console.log('p');
-    fill("red");
-    rect(500, 500, 500, 500);
+    console.log("p");
+    fill("red")
+    pineapples();
+    rect(0, 0, width, height);
 }
