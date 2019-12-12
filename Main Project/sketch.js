@@ -6,8 +6,10 @@
 // Initial variable setup
 
 let screen;
+let panzer4Tank;
 
-let tower;
+let towers = []
+
 
 let isHoldingTower = false;
 
@@ -17,6 +19,12 @@ function preload() {
     pantherTank = loadImage('assets/Panther.png');
     panzer4Tank = loadImage('assets/Panzer4.png');
     T34_85Tank = loadImage('assets/T34_85.png');
+}
+let tower1 = {
+    x: 0,
+    y: 0,
+    image: panzer4Tank
+
 }
 
 function setup() {
@@ -44,6 +52,7 @@ function displayScreen() {
     if (screen === "playScreen") {
         displayPlay();
         startGame();
+        drawTowers();
     }
 
     if (screen === "optionsScreen") {
@@ -206,21 +215,23 @@ function towerSelect() {
     }
     tower1.onPress = function() {
         isHoldingTower = true;
+        selectedTower = panzer4Tank
     }
     tower1.draw();
 }
 
 function mouseReleased() {
     if (isHoldingTower) {
-        placeTower();
-        //isHoldingTower = false;
+        isHoldingTower = false;
+        towers.push(selectedTower);
+        selectedTower = 0;
     }
 
 }
 
-function placeTower() {
-    console.log("p");
-    fill("red")
-    pineapples();
-    rect(0, 0, width, height);
+function drawTowers() {
+    for (let i = 0; i < towers.length; i++) {
+        image(towers[i].image, towers[i].x, towers[i].y)
+        console.log("p")
+    }
 }
