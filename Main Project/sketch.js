@@ -20,7 +20,7 @@ function preload() {
     panzer4Tank = loadImage('assets/Panzer4.png');
     T34_85Tank = loadImage('assets/T34_85.png');
 }
-let tower1 = {
+let panzer = {
     x: 0,
     y: 0,
     image: panzer4Tank
@@ -215,7 +215,7 @@ function towerSelect() {
     }
     tower1.onPress = function() {
         isHoldingTower = true;
-        selectedTower = panzer4Tank
+        selectedTower = panzer;
     }
     tower1.draw();
 }
@@ -225,13 +225,16 @@ function mouseReleased() {
         isHoldingTower = false;
         towers.push(selectedTower);
         selectedTower = 0;
+        panzer.x = pmouseX
+        panzer.y = pmouseY
     }
 
 }
 
 function drawTowers() {
     for (let i = 0; i < towers.length; i++) {
-        image(towers[i].image, towers[i].x, towers[i].y)
         console.log("p")
+        rect(towers[i].x, towers[i].y, 50, 50)
     }
 }
+
