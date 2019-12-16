@@ -8,7 +8,7 @@
 let screen;
 let panzer4Tank;
 
-let towers = []
+let towers = [];
 
 
 let isHoldingTower = false;
@@ -72,7 +72,7 @@ function displayMain() {
     // Drawing text on screen
     textSize(100);
     textFont(CoolFontRegular);
-    fill(0)
+    fill(0);
     text("Armoured Defense", width/2, height/4);
 }
 
@@ -86,9 +86,9 @@ function displayPlay() {
 
 
     // Drawing playing interface
-    fill(255)
-    stroke(0)
-    strokeWeight(5)
+    fill(255);
+    stroke(0);
+    strokeWeight(5);
     rect(width/32, height/16, width/32 * 27, height/16 * 14);
     fill("green");
     rect(width/32 * 28.5, height/16 * 7.5, width/32 * 3, height/16 * 7.5);
@@ -118,7 +118,7 @@ function mainButtons() {
         startButton.draw();
     }
     startButton.onPress = function() {
-        clear()
+        clear();
         screen = "playScreen";
     }
     optionsButton = new Clickable(width/2 - 125, height/2 + 100);
@@ -132,7 +132,7 @@ function mainButtons() {
         optionsButton.draw();
     }
     optionsButton.onPress = function() {
-        clear()
+        clear();
         screen = "optionsScreen";
     }
 
@@ -142,7 +142,7 @@ function mainButtons() {
 function playButtons() {
     playBackButton = new Clickable(width/32 * 29, height/16);
     playBackButton.color = "green";
-    playBackButton.text = "Back To Menu"
+    playBackButton.text = "Back To Menu";
     playBackButton.textFont = CoolFontRegular;
     playBackButton.textSize = 20;
     playBackButton.onHover = function() {
@@ -150,7 +150,7 @@ function playButtons() {
         playBackButton.draw();
     }
     playBackButton.onPress = function() {
-        clear()
+        clear();
         screen = "mainScreen";
     }
 
@@ -175,13 +175,13 @@ function optionsButtons() {
     optionsBackButton.color = "green";
     optionsBackButton.text = "Back";
     optionsBackButton.textSize = 30;
-    optionsBackButton.textFont = CoolFontRegular
+    optionsBackButton.textFont = CoolFontRegular;
     optionsBackButton.onHover = function() {
-        optionsBackButton.color = "darkgreen"
-        optionsBackButton.draw()
+        optionsBackButton.color = "darkgreen";
+        optionsBackButton.draw();
     }
     optionsBackButton.onPress = function() {
-        clear()
+        clear();
         screen = "mainScreen";
     }
 
@@ -220,21 +220,23 @@ function towerSelect() {
     tower1.draw();
 }
 
+
+
 function mouseReleased() {
     if (isHoldingTower) {
         isHoldingTower = false;
         towers.push(selectedTower);
         selectedTower = 0;
-        panzer.x = pmouseX
-        panzer.y = pmouseY
+        towers[towers.length-1].x = pmouseX;
+        towers[towers.length-1].y = pmouseY;
     }
 
 }
 
 function drawTowers() {
     for (let i = 0; i < towers.length; i++) {
-        console.log("p")
-        rect(towers[i].x, towers[i].y, 50, 50)
+        rect(towers[i].x, towers[i].y, 50, 50);
     }
 }
 
+''
