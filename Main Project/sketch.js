@@ -10,8 +10,11 @@ let panzer4Tank;
 
 let towers = [];
 
+let defending = false;
 
 let isHoldingTower = false;
+
+let currentRound = 0;
 
 function preload() {
     CoolFontRegular = loadFont('assets/SF Atarian System.ttf');
@@ -164,8 +167,13 @@ function playButtons() {
         nextRoundButton.draw();
     }
     nextRoundButton.onPress = function() {
+        currentRound = currentRound++
+        defending = true;
+        startRound();
 
     }
+
+
 
 }
 
@@ -189,6 +197,9 @@ function optionsButtons() {
 
 function startGame() {
     towerSelect();
+    if (defending) {
+        spawnEnemies();
+    }
 
 }
 
@@ -215,7 +226,7 @@ function towerSelect() {
     }
     tower1.onPress = function() {
         isHoldingTower = true;
-        selectedTower = panzer;
+        selectedTower = panzer
     }
     tower1.draw();
 }
@@ -224,8 +235,8 @@ function towerSelect() {
 
 function mouseReleased() {
     if (isHoldingTower) {
+        towers.push(selectedTower)
         isHoldingTower = false;
-        towers.push(selectedTower);
         selectedTower = 0;
         towers[towers.length-1].x = pmouseX;
         towers[towers.length-1].y = pmouseY;
@@ -239,4 +250,31 @@ function drawTowers() {
     }
 }
 
-''
+let enemies = []
+
+function startRound() {
+    enemies.push(enemy)
+
+
+}
+let enemy = {
+    x: 0,
+    y: 0
+}
+let enemySpawned = 0;
+
+function spawnEnemies() {
+    let waitTime = 500;
+    let i;
+    for (i; i < enemies.length; i++) {
+        if (millis() > enemySpawned + waitTime) {
+            enemySpawned = millis();
+            rect(enemies[i].x, enemies[i].y, 50, 50)
+
+        }
+    }
+}
+
+function enemyKilled() {
+
+}
