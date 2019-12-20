@@ -5,6 +5,8 @@
 
 // Initial variable setup
 
+let enemies = []
+
 let screen;
 let panzer4Tank;
 
@@ -249,32 +251,36 @@ function drawTowers() {
         rect(towers[i].x, towers[i].y, 50, 50);
     }
 }
-
-let enemies = []
-
 function startRound() {
-    enemies.push(enemy)
+    enemies.push(1)
 
 
 }
-let enemy = {
-    x: 0,
-    y: 0
-}
-let enemySpawned = 0;
 
-function spawnEnemies() {
-    let waitTime = 500;
-    let i;
-    for (i; i < enemies.length; i++) {
-        if (millis() > enemySpawned + waitTime) {
-            enemySpawned = millis();
-            rect(enemies[i].x, enemies[i].y, 50, 50)
-
-        }
+class Enemy {
+    constructor(x, y, size) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+    }
+    display() {
+        circle(this.x, this.y, this.size);
     }
 }
 
-function enemyKilled() {
 
+function spawnEnemies() {
+    for(let i = 0; i < enemies.length; i++) {
+        window["enemy"+i] = new Enemy(500, 500, 50);
+    }
+
+}
+
+function enemyKilled() {
+    giveMoney(500)
+
+}
+
+function giveMoney(amount) {
+    balance = balance + amount;
 }
