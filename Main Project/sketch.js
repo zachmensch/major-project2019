@@ -56,8 +56,12 @@ function displayScreen() {
     
     if (screen === "playScreen") {
         displayPlay();
-        startGame();
         drawTowers();
+        for(let i = 0; i < enemies.length; i++) {
+            window["enemy"+i].move();
+            window["enemy"+i].display();
+        }
+        towerSelect();
     }
 
     if (screen === "optionsScreen") {
@@ -197,13 +201,6 @@ function optionsButtons() {
 
 }
 
-function startGame() {
-    towerSelect();
-    if (defending) {
-        spawnEnemies();
-    }
-
-}
 
 function towerSelect() {
     let tower1dmg = 5;
@@ -251,11 +248,6 @@ function drawTowers() {
         rect(towers[i].x, towers[i].y, 50, 50);
     }
 }
-function startRound() {
-    enemies.push(1)
-
-
-}
 
 class Enemy {
     constructor(x, y, size) {
@@ -266,8 +258,18 @@ class Enemy {
     display() {
         circle(this.x, this.y, this.size);
     }
+    move() {
+        this.x = this.x + 0.01;
+    }
 }
 
+function startRound() {
+    enemies.push(1)
+    spawnEnemies();
+
+
+
+}
 
 function spawnEnemies() {
     for(let i = 0; i < enemies.length; i++) {
