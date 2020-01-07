@@ -12,7 +12,9 @@ let panzer4Tank;
 
 let towers = [];
 
-let defending = false;
+let roundOn = false;
+
+let enemiesThisRound = 0;
 
 let isHoldingTower = false;
 
@@ -57,9 +59,9 @@ function displayScreen() {
     if (screen === "playScreen") {
         displayPlay();
         drawTowers();
-        for(let i = 0; i < enemies.length; i++) {
-            window["enemy"+i].move();
-            window["enemy"+i].display();
+        if (roundOn === true) {
+            if (enemies.length < enemiesThisRound)
+                spawnEnemies();
         }
         towerSelect();
     }
@@ -86,6 +88,7 @@ function displayMain() {
 }
 
 function displayPlay() {
+    rectMode(CORNER)
     background(backgroundImage);
 
     playButtons();
@@ -149,6 +152,7 @@ function mainButtons() {
 }
 
 function playButtons() {
+    rectMode(CORNER)
     playBackButton = new Clickable(width/32 * 29, height/16);
     playBackButton.color = "green";
     playBackButton.text = "Back To Menu";
@@ -173,9 +177,9 @@ function playButtons() {
         nextRoundButton.draw();
     }
     nextRoundButton.onPress = function() {
-        currentRound = currentRound++
-        defending = true;
-        startRound();
+        currentRound = currentRound + 1;
+        roundOn = true;
+        enemiesThisRound = enemiesThisRound + 1;
 
     }
 
@@ -206,10 +210,11 @@ function towerSelect() {
     let tower1dmg = 5;
     let tower1range = 10;
     let tower1speed = 3;
+    rectMode(CORNER)
     tower1 = new Clickable(width/32 * 29, height/16 * 8);
     tower1.color = "peru";
     tower1.cornerRadius = 0;
-    tower1.text = "Panzer 4";
+    tower1.text = "Tank 1";
     tower1.textFont = CoolFontRegular;
     tower1.textSize = 20;
     tower1.onHover = function() {
@@ -245,35 +250,37 @@ function mouseReleased() {
 
 function drawTowers() {
     for (let i = 0; i < towers.length; i++) {
+        rectMode(CENTER)
         rect(towers[i].x, towers[i].y, 50, 50);
     }
 }
 
-class Enemy {
-    constructor(x, y, size) {
-        this.x = x;
-        this.y = y;
-        this.size = size;
-    }
-    display() {
-        circle(this.x, this.y, this.size);
-    }
-    move() {
-        this.x = this.x + 0.01;
-    }
-}
-
-function startRound() {
-    enemies.push(1)
-    spawnEnemies();
-
-
+// class Enemy {
+//     constructor(x, y, size) {
+//         this.x = x;
+//         this.y = y;
+//         this.size = size;
+//     }
+//     display() {
+//         circle(this.x, this.y, this.size);
+//     }
+//     move() {
+//         this.x = this.x + 0.01;
+//     }
+// }
+enemy = {
+    x: 500,
+    y: 500,
+    dead: false,
 
 }
 
 function spawnEnemies() {
-    for(let i = 0; i < enemies.length; i++) {
-        window["enemy"+i] = new Enemy(500, 500, 50);
+    console.log("p")
+    enemies.push(enemy)
+    for (let j; j < enemies.length; j++) {
+        circle(enemies[i].x, enemies[i].y, 25)
+        console.log("hth")
     }
 
 }
