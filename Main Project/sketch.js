@@ -56,14 +56,23 @@ function displayScreen() {
         displayMain();
     }
     
+    let waitTime = 500;
+    let enemyMoved = 0;
+    let blah = 0;
+
     if (screen === "playScreen") {
         displayPlay();
         drawTowers();
-        if (roundOn === true) {
-            if (enemies.length < enemiesThisRound)
-                spawnEnemies();
-        }
         towerSelect();
+        if (roundOn) {
+            for (let p = 0; p < enemies.length; p++) {
+                enemies[p].display();
+                enemies[blah].move();
+                blah = blah + 1;
+                
+            }
+
+        }
     }
 
     if (screen === "optionsScreen") {
@@ -180,6 +189,7 @@ function playButtons() {
         currentRound = currentRound + 1;
         roundOn = true;
         enemiesThisRound = enemiesThisRound + 1;
+        spawnEnemies();
 
     }
 
@@ -255,41 +265,25 @@ function drawTowers() {
     }
 }
 
-// class Enemy {
-//     constructor(x, y, size) {
-//         this.x = x;
-//         this.y = y;
-//         this.size = size;
-//     }
-//     display() {
-//         circle(this.x, this.y, this.size);
-//     }
-//     move() {
-//         this.x = this.x + 0.01;
-//     }
-// }
-enemy = {
-    x: 500,
-    y: 500,
-    dead: false,
-
+class Enemy {
+    constructor(x, y, size) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+    }
+    display() {
+        circle(this.x, this.y, this.size);
+    }
+    move() {
+        if(this.x < 883) {
+            this.x = this.x + 3;
+        }
+    }
 }
+
+let enemySpawnX = 150
+let enemySpawnY = 150
 
 function spawnEnemies() {
-    console.log("p")
-    enemies.push(enemy)
-    for (let j; j < enemies.length; j++) {
-        circle(enemies[i].x, enemies[i].y, 25)
-        console.log("hth")
-    }
-
-}
-
-function enemyKilled() {
-    giveMoney(500)
-
-}
-
-function giveMoney(amount) {
-    balance = balance + amount;
+    enemies.push(enemy = new Enemy(enemySpawnX, enemySpawnY, 25))
 }
