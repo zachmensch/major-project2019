@@ -270,6 +270,7 @@ class Enemy {
         this.x = x;
         this.y = y;
         this.size = size;
+        this.health = 100;
     }
     display() {
         circle(this.x, this.y, this.size);
@@ -277,6 +278,12 @@ class Enemy {
     move() {
         if(this.x < 883) {
             this.x = this.x + 3;
+        }
+    }
+    checkIfDead() {
+        if (this.health <= 0) {
+             let enemyToKill = enemies.indexOf(this.enemy)
+             enemies.splice(enemyToKill, 1)
         }
     }
 }
