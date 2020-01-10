@@ -3,11 +3,35 @@
 
 //https://juniorgeneral.org/index.php/figure/designer/Dirk%20Schoenberger
 
-// Initial variable setup
+
+
+class Enemy {
+    constructor(x, y, size) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.health = 100;
+    }
+    display() {
+        circle(this.x, this.y, this.size);
+    }
+    move() {
+        if(this.x < width/32 * 27) {
+            this.x = this.x + 3;
+        }
+    }
+    checkIfDead() {
+        if (this.health <= 0) {
+             let enemyToKill = enemies.indexOf(this.enemy)
+             enemies.splice(enemyToKill, 1)
+        }
+    }
+}
 
 let enemies = []
 
 let screen;
+
 let panzer4Tank;
 
 let towers = [];
@@ -20,18 +44,22 @@ let isHoldingTower = false;
 
 let currentRound = 0;
 
+class Tower {
+    constructor(x, y, type) {
+        this.x = x;
+        this.y = y;
+        this.type = type;
+    }
+    target() {
+
+    }
+}
 function preload() {
     CoolFontRegular = loadFont('assets/SF Atarian System.ttf');
     backgroundImage = loadImage('assets/798161.jpg');
     pantherTank = loadImage('assets/Panther.png');
     panzer4Tank = loadImage('assets/Panzer4.png');
     T34_85Tank = loadImage('assets/T34_85.png');
-}
-let panzer = {
-    x: 0,
-    y: 0,
-    image: panzer4Tank
-
 }
 
 function setup() {
@@ -240,7 +268,7 @@ function towerSelect() {
     }
     tower1.onPress = function() {
         isHoldingTower = true;
-        selectedTower = panzer
+        selectedTower = new Tower()
     }
     tower1.draw();
 }
@@ -255,7 +283,7 @@ function mouseReleased() {
         towers[towers.length-1].x = pmouseX;
         towers[towers.length-1].y = pmouseY;
     }
-
+ 
 }
 
 function drawTowers() {
@@ -265,32 +293,12 @@ function drawTowers() {
     }
 }
 
-class Enemy {
-    constructor(x, y, size) {
-        this.x = x;
-        this.y = y;
-        this.size = size;
-        this.health = 100;
-    }
-    display() {
-        circle(this.x, this.y, this.size);
-    }
-    move() {
-        if(this.x < 883) {
-            this.x = this.x + 3;
-        }
-    }
-    checkIfDead() {
-        if (this.health <= 0) {
-             let enemyToKill = enemies.indexOf(this.enemy)
-             enemies.splice(enemyToKill, 1)
-        }
-    }
-}
 
-let enemySpawnX = 150
-let enemySpawnY = 150
 
 function spawnEnemies() {
+    let enemySpawnX = width/32 + 12.5
+    let enemySpawnY = height/2
+    for(let q = 0; q < enemiesThisRound; q++) {
     enemies.push(enemy = new Enemy(enemySpawnX, enemySpawnY, 25))
+    }
 }
