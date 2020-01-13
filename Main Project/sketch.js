@@ -50,9 +50,11 @@ class Tower {
         this.y = y;
         this.type = type;
     }
-    target() {
+    chooseTarget() {
 
     }
+
+ 
 }
 function preload() {
     CoolFontRegular = loadFont('assets/SF Atarian System.ttf');
@@ -97,6 +99,7 @@ function displayScreen() {
                 enemies[p].display();
                 enemies[blah].move();
                 blah = blah + 1;
+                enemies[p].checkIfDead();
                 
             }
 
