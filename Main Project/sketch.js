@@ -11,6 +11,7 @@ class Enemy {
         this.y = y;
         this.size = size;
         this.health = 100;
+        distFromBase = this.x;
     }
     display() {
         circle(this.x, this.y, this.size);
@@ -18,6 +19,7 @@ class Enemy {
     move() {
         if(this.x < width/32 * 27) {
             this.x = this.x + 3;
+            distFromBase - 3;
         }
     }
     checkIfDead() {
@@ -33,11 +35,11 @@ let enemies = []
 let screen;
 
 let panzer4Tank;
-
+let health = 100;
 let towers = [];
-
+let distance;
 let roundOn = false;
-
+let enemypos;
 let enemiesThisRound = 0;
 
 let isHoldingTower = false;
@@ -51,6 +53,9 @@ class Tower {
         this.type = type;
     }
     chooseTarget() {
+        for (let f; f < enemies.length; f++) {
+            
+        }
 
     }
 
@@ -305,3 +310,21 @@ function spawnEnemies() {
     enemies.push(enemy = new Enemy(enemySpawnX, enemySpawnY, 25))
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ENEMY: 50, 25  75
+// ENEMY: 30, 65 95
+// ENEMY: 65, 20 85
+
+//TOWER: 25, 30 55

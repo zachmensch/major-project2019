@@ -5,7 +5,6 @@ I am going to create a tower defense game. The player will be able to progress t
 
 ## Need To Have List
 - Infinitely scaling waves
-- Decent selection of towers with unique functions (5+ towers)
 - Functioning, easy to use interface
 - Various sound effects (Button presses, tower attack sounds, etc)
 - Control over basic gameplay options (Controls, sound)
@@ -20,6 +19,7 @@ I am going to create a tower defense game. The player will be able to progress t
 - Upgrades for towers (Range, Damage, Fire Rate)
 - Multiple enemy types with different stats (3+)
 - Player controlled character with special abilities and effects (Power up towers, destroy enemies, effect income)
+- Decent selection of towers with unique functions (5+ towers)
 - Ability to save progress and return later
 - Dynamic upgrade paths for towers (Special abilities, evolving attack methods)
 - Speed up gameplay option (Attackers move faster, towers shoot faster, etc)
