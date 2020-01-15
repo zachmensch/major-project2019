@@ -11,7 +11,6 @@ class Enemy {
         this.y = y;
         this.size = size;
         this.health = 100;
-        distFromBase = this.x;
     }
     display() {
         circle(this.x, this.y, this.size);
@@ -23,8 +22,7 @@ class Enemy {
     }
     checkIfDead() {
         if (this.health <= 0) {
-             let enemyToKill = enemies.indexOf(this.enemy)
-             enemies.splice(enemyToKill, 1)
+             enemies.splice(this.enemy, 1)
         }
     }
 }
@@ -110,9 +108,7 @@ function displayScreen() {
     if (screen === "mainScreen") {
         displayMain();
     }
-    
-    let waitTime = 500;
-    let enemyMoved = 0;
+
     let blah = 0;
 
     if (screen === "playScreen") {
@@ -327,7 +323,7 @@ function spawnEnemies() {
     let enemySpawnX = width/32 + 12.5
     let enemySpawnY = height/2
     for(let q = 0; q < enemiesThisRound; q++) {
-    enemies.push(enemy = new Enemy(enemySpawnX, enemySpawnY, 25))
+        enemies.push(enemy = new Enemy(enemySpawnX, enemySpawnY, 25))
     }
 }
 
