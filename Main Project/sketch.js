@@ -19,7 +19,6 @@ class Enemy {
     move() {
         if(this.x < width/32 * 27) {
             this.x = this.x + 3;
-            distFromBase - 3;
         }
     }
     checkIfDead() {
@@ -53,12 +52,33 @@ class Tower {
         this.type = type;
     }
     chooseTarget() {
-        for (let f; f < enemies.length; f++) {
-            
-        }
 
     }
 
+    // fire() {
+    //     let thisBullet = {
+    //       x: ,
+    //       y: ,
+    //       radius: ,
+    //       angle: gunAngle,
+    //       speed: 10
+    //     };
+    //     bullets.push(thisBullet);
+    //   }
+      
+    // updateBullets() {
+    //     for (let h = bullets.length - 1; h > 0; h--) {
+    //       if (bullets[h].x < 0 || bullets[h].x > width ||
+    //         bullets[h].y < 0 || bullets[h].y > height) {
+    //           bullets.splice(h, 1)
+    //         }
+    //       else {
+    //       bullets[h].x += bullets[h].speed * cos(bullets[h].angle);
+    //       bullets[h].y += bullets[h].speed * sin(bullets[h].angle);
+    //       circle(bullets[h].x, bullets[h].y, bullets[h].radius);
+    //       }
+    //     }
+    //   }
  
 }
 function preload() {
