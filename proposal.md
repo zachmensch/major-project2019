@@ -9,12 +9,13 @@ I am going to create a tower defense game. The player will be able to progress t
 - Various sound effects (Button presses, tower attack sounds, etc)
 - Control over basic gameplay options (Controls, sound)
 - Income / money system for buying towers (Gain money from destroying enemies and completing rounds)
-- Sell / destory placed towers
 - "Base" with health (Certain amount of enemies entering)
+- Place towers, towers attack enemies, enemies die.
 
 
 
 ## Nice To Have List
+- Sell / destory placed towers
 - Multiple map selections (2+)
 - Upgrades for towers (Range, Damage, Fire Rate)
 - Multiple enemy types with different stats (3+)

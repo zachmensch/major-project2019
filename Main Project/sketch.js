@@ -5,6 +5,22 @@
 
 
 
+let enemies = []
+let money = 0;
+let screen;
+
+let panzer4Tank;
+let health = 100;
+let towers = [];
+let distance;
+let roundOn = false;
+let enemypos;
+let enemiesThisRound = 0;
+
+let isHoldingTower = false;
+
+let currentRound = 0;
+
 class Enemy {
     constructor(x, y, size) {
         this.x = x;
@@ -24,25 +40,10 @@ class Enemy {
         if (this.health <= 0) {
              enemies.splice(this.enemy, 1)
              console.log("dead")
+             money += 100
         }
     }
 }
-
-let enemies = []
-
-let screen;
-
-let panzer4Tank;
-let health = 100;
-let towers = [];
-let distance;
-let roundOn = false;
-let enemypos;
-let enemiesThisRound = 0;
-
-let isHoldingTower = false;
-
-let currentRound = 0;
 
 class Tower {
     constructor(x, y, type) {
@@ -93,6 +94,7 @@ function setup() {
     screen = "mainScreen";
     textAlign(CENTER, CENTER);
     rectMode(CORNER);
+    money = 500
 }
 
 function draw() {
@@ -167,6 +169,8 @@ function displayPlay() {
     fill("green");
     rect(width/32 * 28.5, height/16 * 7.5, width/32 * 3, height/16 * 7.5);
     rect(width/32 * 28.5, height/16 * 4.25, width/32 * 3, height/16 * 3);
+    text("Money: " + money + "", width/32 * 30, height/16 * 5)
+    text("Health: " + health + "", width/32 * 30, height/16 * 6)
 
 
 
@@ -243,6 +247,7 @@ function playButtons() {
         roundOn = true;
         enemiesThisRound = enemiesThisRound + 1;
         spawnEnemies();
+        money += 200 * currentRound - 100 * currentRound
 
     }
 
@@ -307,6 +312,7 @@ function mouseReleased() {
         selectedTower = 0;
         towers[towers.length-1].x = pmouseX;
         towers[towers.length-1].y = pmouseY;
+        money -= 250
     }
  
 }
