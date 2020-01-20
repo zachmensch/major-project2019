@@ -16,13 +16,14 @@ class Enemy {
         circle(this.x, this.y, this.size);
     }
     move() {
-        if(this.x < width/32 * 27) {
+        if(this.x < width/32 * 27.75) {
             this.x = this.x + 3;
         }
     }
     checkIfDead() {
         if (this.health <= 0) {
              enemies.splice(this.enemy, 1)
+             console.log("dead")
         }
     }
 }
@@ -323,24 +324,10 @@ function spawnEnemies() {
     let enemySpawnX = width/32 + 12.5
     let enemySpawnY = height/2
     for(let q = 0; q < enemiesThisRound; q++) {
-        enemies.push(enemy = new Enemy(enemySpawnX, enemySpawnY, 25))
+        enemies.push(new Enemy(enemySpawnX, enemySpawnY, 25))
     }
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-// ENEMY: 50, 25  75
-// ENEMY: 30, 65 95
-// ENEMY: 65, 20 85
-
-//TOWER: 25, 30 55
